@@ -1,0 +1,11 @@
+2018-05-03 08:55:37,541 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-10 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2018-05-03 08:55:37,553 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-10 - Application started (Dev)
+2018-05-03 08:55:57,597 [DEBUG] from application.ErrorHandler in application-akka.actor.default-dispatcher-4 - onClientError: statusCode = 404, uri = /assets/javascripts/jquery-1.9.0.min.js, message = Resource not found by Assets controller
+2018-05-03 08:56:28,229 [DEBUG] from application.ErrorHandler in application-akka.actor.default-dispatcher-7 - onClientError: statusCode = 404, uri = /assets/javascripts/jquery-1.9.0.min.js, message = Resource not found by Assets controller
+2018-05-03 08:57:11,144 [DEBUG] from application.ErrorHandler in application-akka.actor.default-dispatcher-2 - onClientError: statusCode = 404, uri = /assets/javascripts/jquery-1.9.0.min.js, message = Resource not found by Assets controller
+2018-05-03 08:57:25,690 [DEBUG] from application.ErrorHandler in application-akka.actor.default-dispatcher-10 - onClientError: statusCode = 404, uri = /assets/javascripts/jquery-1.9.0.min.js, message = Resource not found by Assets controller

@@ -1,0 +1,82 @@
+@(airports: Seq[((String, String, String, String, String), Seq[(String, String, String, String, String, String, String)])], formData: Form[CountryData], startTime: Long)(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+<!doctype html>
+@import helper._
+@main{
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Airport information</title>
+  </head>
+
+  <body>
+    <h1>Query option</h1>
+
+      <h2>Type country name or code for print the airports & runways at each airport for selected country</h2>
+      <i>not case sensitive. Example: You can type "UA" or "Ukraine"</i>
+
+      @helper.form(action = routes.HomeController.newTask) {
+        @helper.inputText(formData("Country name"))
+          <input type="submit" value="Print result">
+      }
+
+  @if(airports.size > 1) {<h1> @airports.size airports for selected country</h1>
+
+    <table style="text-align: center; border: 1px double black; width: 100%;">
+      <tr><th></th><th>ID</th><th>Ident</th><th>Type</th><th>Name</th><th>Country</th><th>The presence of runways</th></tr>
+      @airports.map{airport =>
+        <tr>
+          <td>Airport: </td>
+          <td>@airport._1._1</td>
+          <td>@airport._1._2</td>
+          <td>@airport._1._3</td>
+          <td>@airport._1._4</td>
+          <td>@airport._1._5</td>
+          <td>@if(airport._2.isEmpty){no runways} else {
+            <tr><th></th><th></th><th>ID</th><th>Airport ref.</th><th>Airport_ident</th><th>Length_ft</th><th>Width_ft</th><th>Surface</th><th>Le_ident</th></tr>
+            @airport._2.map{x =>
+                    <tr>
+                      <td></td>
+                      <td>Runway: </td>
+              <td>@x._1</td>
+              <td>@x._2</td>
+              <td>@x._3</td>
+              <td>@x._4</td>
+              <td>@x._5</td>
+              <td>@x._6</td>
+              <td>@x._7</td>
+              <tr></tr>
+              </tr>
+                    <p></p>
+            }
+          } </td>
+        </tr>
+      }
+    </table>
+    <p>
+      Searching time is: @{(System.currentTimeMillis() - startTime)/1000} sec
+    </p>
+  } else {}
+
+
+
+
+
+
+  </body>
+</html>
+}
+
+
+  @*@if(airport._2.isEmpty) no runways for this airport else {*@
+@*<th>Id</th><th>Airport_ref</th><th>Airport_ident</th><th>Length_ft</th><th>Width_ft</th><th>Surface</th><th>Le_ident</th>*@
+@*<td>@airport._2.foreach(runway =>*@
+
+@*<td>@runway._1</td>*@
+@*<td>@runway._2</td>*@
+@*<td>@runway._3</td>*@
+@*<td>@runway._4</td>*@
+@*<td>@runway._5</td>*@
+@*<td>@runway._6</td>*@
+@*<td>@runway._7</td>*@
+@*)</td>*@
+@*}*@

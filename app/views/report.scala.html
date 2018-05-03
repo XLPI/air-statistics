@@ -1,0 +1,71 @@
+@(top: Seq[(String, Int)], bottom: Seq[(String, Int)], surfaceTop: Seq[(String, Int)], topLeIdent: Seq[(String, Int)])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+@import helper._
+@main{
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Airport information</title>
+  </head>
+
+  <body>
+    <h1>Report option</h1>
+
+    <p>
+      <i>This option print 10 countries with highest number of airports (with count) and countries with lowest number of airports.</i>
+    </p>
+    <h2>TOP10 Countries with highest number of airports</h2>
+    <table style="text-align: center; border: 1px double black; width: 100%;">
+      <tr><th>Country name</th><th>Number of airports</th></tr>
+      @top.map { country =>
+        <tr style="color: red; font-weight: bold; font-size: 16px;">
+        <td>@country._1</td>
+        <td>@country._2</td>
+        </tr>
+      }
+    </table>
+
+    <p></p>
+
+    <h2>BOTTOM10 Countries with lowest number of airports</h2>
+    <table style="text-align: center; border: 1px double black; width: 100%;">
+      <tr><th>Country name</th><th>Number of airports</th></tr>
+      @bottom.map { country =>
+        <tr style="color: red; font-weight: bold; font-size: 16px;">
+          <td>@country._1</td>
+          <td>@country._2</td>
+        </tr>
+        }
+    </table>
+
+    <h2>TOP10 list by runways's surface type</h2>
+    <table style="text-align: center; border: 1px double black; width: 100%;">
+      <tr><th>Type of surface</th><th>Number</th></tr>
+      @surfaceTop.map { surface =>
+        <tr style="color: red; font-weight: bold; font-size: 16px;">
+          <td>@surface._1</td>
+          <td>@surface._2</td>
+        </tr>
+      }
+    </table>
+
+    <h2>TOP10 list by runways's "le_ident" type</h2>
+    <table style="text-align: center; border: 1px double black; width: 100%;">
+      <tr><th>Le_ident type</th><th>Number</th></tr>
+      @topLeIdent.map { le_ident =>
+        <tr style="color: red; font-weight: bold; font-size: 16px;">
+          <td>@le_ident._1</td>
+          <td>@le_ident._2</td>
+        </tr>
+      }
+    </table>
+
+
+
+
+
+    @*<p>Bonus: Print the top 10 most common runway identifications (indicated in "le_ident" column)</p>*@
+
+  </body>
+</html>
+}
